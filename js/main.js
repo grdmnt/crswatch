@@ -18,7 +18,7 @@ $(document).ready(function() {
           this.sections = response.data.sections;
           this.isLoading = false;
         })
-      })
+      });
     },
     computed: {
       tableFilter: function () {

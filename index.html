@@ -65,6 +65,9 @@
           <tbody v-show="!isLoading">
             <tr role="row" v-for="section in tableFilter">
                 <td id="class">
+                  <div class="ui circular mini red icon button" :data-tooltip="section.restrictions" v-if="section.isRestricted">
+                    <i class="exclamation icon"></i>
+                  </div>
                   {{ section.base_class }}
                 </td>
                 <td id="sched">
@@ -75,6 +78,7 @@
                 </td>
                 <td id="slots">
                   {{ section.available_slots }}
+                  
                 </td>
             </tr>
           </tbody>
