@@ -1,0 +1,75 @@
+html {
+	margin: 0;
+	padding: 0;
+	font-family: 'Roboto Mono', monospace;
+}
+
+#home {
+	min-height: 100%;
+}
+
+#transition {
+	visibility: hidden;
+}
+
+body {
+	background-image: url('../images/halftone.png');
+}
+
+.ui.container {
+	/*text-align: center;*/
+	padding-bottom: 4rem;
+}
+
+.display-flex {
+	display: flex;
+}
+
+.header-message {
+	margin-top: 2rem;
+	flex-grow: 1;
+	text-align: left;
+}
+
+.header-search {
+	margin-top: 2rem;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100vw;
+	background-color: #333;
+	color: #777;
+	text-align: center;
+	font-size: 12px;
+	padding-top: .3rem;
+	padding-bottom: .3rem;
+}
+
+footer a {
+	text-decoration: none;
+	color: #f4f4f4;
+}
+
+.table {
+	margin-top: 2rem !important;
+}
+
+#title {
+	font-size: 4rem;
+	font-weight: normal;
+}
+
+#show {
+	font-size: 2rem;
+	padding-top: 2rem;
+}
+
+.fullpage {
+	min-height: 95vh;
+}
+
+#suggestions {
+	color: #f4f4f4;
+}

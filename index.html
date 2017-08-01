@@ -1,0 +1,113 @@
+<html>
+	<head>
+		<title>CRS Watch</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+		<meta property="og:title" content="CRS Watch" />
+		<meta property="og:url" content="http://crswatch.peioris.me/" />
+		<meta property="og:type" content="website" />
+		<meta property="og:description" content="I am the sword in the darkness. I am the watcher on the walls. I am the shield that guards the realms of iskos and iskas." />
+		<meta property="og:image" content="http://i.imgur.com/ghum3CJ.png" />
+		<meta property="og:site_name" content="CRS Watch" />
+		<link rel="stylesheet" href="css/semantic.min.css">
+		<link rel="stylesheet" href="css/icon.min.css">
+		<link rel="stylesheet" href="css/main.css">
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-81902316-1', 'auto');
+			ga('send', 'pageview');
+
+		</script>
+    <script src="js/vue.min.js"></script>
+	</head>
+
+	<body>
+    <!--<script src="https://unpkg.com/vue"></script>-->
+        
+		<div class="ui container" id="home">
+			<div class="ui two column centered grid stackable display-flex">
+        <div class="column">
+          <div class="header-search">
+            <h1 class="ui header">CRS Watch
+              <div class="ui red label">BETA</div>
+            </h1>
+            <div class="ui large search" id="search-show">
+                <div class="ui icon input">
+                  <input class="prompt" id="prompt" type="text" placeholder="Class (eg. CS 197)" v-model="query">
+                  <i class="search icon"></i>
+                </div>
+                <a href="#" id="link"><span style="display: none;">why are you here</span></a>
+            </div>
+          </div>
+        </div>
+			</div>
+        <table class="ui sortable red table">
+          <thead>
+            <tr role="header">
+              <th id="class-header">Class</th>
+              <th id="class-sched">Schedule</th>
+              <th id="class-instructor">Instructor</th>
+              <th id="class-slots">Slots</th>
+            </tr>
+          </thead>
+          <tfoot class="full-width" v-show="isLoading">
+            <th colspan="16"><div class="ui active centered inline loader"></div></th>
+          </tfoot>
+          <tfoot class="full-width" v-show="!totalSections && !isLoading">
+            <th colspan="16">
+              <h3 class="ui header center aligned">There are no classes left for this subject.</h3>
+            </th>
+          </tfoot>
+          <tbody v-show="!isLoading">
+            <tr role="row" v-for="section in tableFilter">
+                <td id="class">
+                  {{ section.base_class }}
+                </td>
+                <td id="sched">
+                  {{ section.schedule }}
+                </td>
+                <td id="instructor">
+                  {{ section.instructor }}
+                </td>
+                <td id="slots">
+                  {{ section.available_slots }}
+                </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="ui button fluid" v-show="haveMore()" v-on:click="count += 15">Load more</div>
+		</div>
+			
+		<footer>
+			Made by <a href="https://github.com/coarse">coarse</a> and <a href="https://github.com/grdmnt">grdmnt</a>
+		</footer>
+	</body>
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.js"></script>
+	<!--<script src="{{ url_for('static',filename='js/tablesort.js') }}"></script>-->
+	<!--<script>
+		$('table').tablesort();
+		var search = function() {
+			a = document.getElementById('link');
+			a.href = document.getElementById('prompt').value;
+			a.click()
+		};
+		function handle(e) {
+			if (e.keyCode == 13) search();
+		}
+		$(document).keypress(function(e) {
+		  if(e.which == 13) {
+		  		console.log('wooh tangina');
+		    	search();
+		    }
+		});
+	</script>-->
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/main.js"></script>
+</html>
